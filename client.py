@@ -198,8 +198,7 @@ class SpeedTestClient:
                 f"\033[92mUDP transfer #{stats.transfer_id} finished, "
                 f"total time: {duration:.2f} seconds, "
                 f"total speed: {speed:.1f} bits/second, "
-                f"percentage of packets received successfully: {
-                    success_rate:.1f}%\033[0m"
+                f"percentage of packets received successfully: {success_rate:.1f}%\033[0m"
             )
 
     def start(self):

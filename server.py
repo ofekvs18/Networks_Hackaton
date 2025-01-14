@@ -116,6 +116,9 @@ class SpeedTestServer:
             # Generate and send random data
             data = b'0' * file_size  # Generate dummy data
             client_socket.sendall(data)
+            logging.info(
+                f"\033[92mTCP transfer file in the size of: {file_size}\033[0m"
+            )
             
         except Exception as e:
             logging.error(f"Error handling TCP client {client_address}: {e}")
@@ -154,6 +157,13 @@ class SpeedTestServer:
                                   
                 message = header + payload_data
                 self.udp_socket.sendto(message, client_address)
+
+            logging.info(
+                f"\033[92mUDP transfer file in the size of: {file_size} bits, "
+                f"segmented to: {total_segments} packets, "
+                f"in the size of: {segment_size} bits.\033[0m"
+            )
+
                 
         except Exception as e:
             logging.error(f"Error handling UDP request from {client_address}: {e}")
