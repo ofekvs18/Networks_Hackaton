@@ -221,4 +221,8 @@ class SpeedTestServer:
 
 if __name__ == "__main__":
     server = SpeedTestServer()
-    server.start()
+
+    try:
+        server.start()
+    except KeyboardInterrupt:
+        print("\033[93mServer shutting down...\033[0m")
