@@ -14,7 +14,24 @@ class SpeedTestServer:
     OFFER_MSG_TYPE = 0x2
     REQUEST_MSG_TYPE = 0x3
     PAYLOAD_MSG_TYPE = 0x4
-    
+    ASCII = r"""
+              \   |   /          
+                .-*-.         
+              /   |   \        
+            /\          /\     
+           /  \        /  \    
+          /  .-\  /\  /    \   
+         /.--'  \/  \/      \  
+        /        \ __\     .'\  
+       /   /\     /    _.-'   \  
+      /   /__\     .--'        \  
+     /     ''     .'             \  
+    /      .---.-'         /\     \  
+   /     .'               /__\     '. 
+  /  .--'                /____\      '-.
+ /.-'                      ||          '--.
+"""
+
     def __init__(self, broadcast_port: int = 13117):
         """
         Initialize the server with configuration parameters.
@@ -117,7 +134,7 @@ class SpeedTestServer:
             data = b'0' * file_size  # Generate dummy data
             client_socket.sendall(data)
             logging.info(
-                f"\033[92mTCP transfer file in the size of: {file_size}\033[0m"
+                f"\033[92mTCP transfered file in the size of: {file_size}\033[0m"
             )
             
         except Exception as e:
@@ -159,7 +176,7 @@ class SpeedTestServer:
                 self.udp_socket.sendto(message, client_address)
 
             logging.info(
-                f"\033[92mUDP transfer file in the size of: {file_size} bits, "
+                f"\033[92mUDP transfered file in the size of: {file_size} bits, "
                 f"segmented to: {total_segments} packets, "
                 f"in the size of: {segment_size} bits.\033[0m"
             )
@@ -199,7 +216,8 @@ class SpeedTestServer:
             self._setup_broadcast_socket()
             self._setup_tcp_socket()
             self._setup_udp_socket()
-            
+            logging.info(f"Welcome to ROUTER RANGERS server")
+            logging.info(self.ASCII)
             logging.info(f"Server started, listening on IP address {self.server_ip}")
             
             # Start broadcast thread

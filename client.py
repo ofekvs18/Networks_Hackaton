@@ -208,6 +208,7 @@ class SpeedTestClient:
                 if self.state == ClientState.STARTUP:
                     file_size, tcp_count, udp_count = self._get_user_parameters()
                     self.state = ClientState.LOOKING_FOR_SERVER
+                    logging.info(f"The ROUTER RANGERS client starts...")
                     logging.info(
                         "Client started, listening for offer requests...")
 
